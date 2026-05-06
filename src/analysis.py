@@ -40,6 +40,7 @@ plt.xlabel('Player')
 plt.ylabel('Strike rate')
 plt.xticks(rotation=45)
 plt.tight_layout()
+plt.savefig("output/top_players.png")
 plt.show()
 
 #compare two players
@@ -54,5 +55,17 @@ plt.ylabel('Strike Rate')
 
 plt.xticks(rotation=0)
 plt.tight_layout()
+plt.savefig("output/Strike Rate comparison.png")
 plt.show()
 filtered_players.reset_index().to_csv('player_stats.csv',index=False)
+
+top_runs=player_stats.sort_values(by='runs',ascending=False).head(10)
+plt.figure(figsize=(10,5))
+plt.bar(top_runs.index, top_runs['runs'])
+plt.xticks(rotation=45)
+plt.xlabel('Players')
+plt.ylabel('Runs')
+
+plt.tight_layout()
+plt.savefig('output/top_run_scorers.png')
+plt.show()
